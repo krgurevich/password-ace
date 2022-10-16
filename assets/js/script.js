@@ -1,14 +1,14 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Declared Variables
+// Declares Variables
 const length = "";
 const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowerCase = "abcdefghijklmnopqrstuvwxyz";
 const number = "0123456789";
 const symbol = "!@#$%^&*_-+=";
 
-// Password Length Validation: Returns true if length is valid and the input is a number; returns false, if does not meet criteria
+// Password Length Validation: Returns true if length is valid and the input is a number; returns false, if criteria is not met
 function checkLength(length) {
   if (length < 8 || length > 128) {
     return false;
@@ -22,7 +22,7 @@ function checkLength(length) {
 function generatePassword() {
   let enteredLength = 0;
   enteredLength = window.prompt("Please choose password length between 8 and 128");
-  // This loop will continue checking until returned true
+  // Continuos loop until checkLength function is returned true
   while (checkLength(enteredLength) === false) {
     enteredLength = window.prompt("Invalid Entry!  Please choose password length between 8 and 128")
   }
@@ -50,16 +50,15 @@ function generatePassword() {
   if (lowerResult) {
     arrayResult = arrayResult.concat(lowerCase.split(""))
   }
-  // Uses Math.random function to return a random password
-  console.log(enteredLength);
+  // Uses Math.random method to return a random password
   for (let i = 0; i < enteredLength; i++) {
     userResult.push(arrayResult[Math.floor(Math.random() * arrayResult.length)]);
   }
-  // Creates and returns a new string by concatenating of the elements in the array
+  // Creates and returns a new string by concatenating the elements in the array
   return userResult.join("");
 }
 
-// Write password to the #password input
+// Writes password to the #password input
 function writePassword() {
   var password = generatePassword();
   console.log(password);
@@ -67,5 +66,5 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Add event listener to generate button
+// Adds event listener to generate button
 generateBtn.addEventListener("click", writePassword);
